@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 1,
       height: 1,
-    }
+    },
+    alignSelf: 'center',
   },
   imgWrapper: {
     width: 260,

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import Carousel from 'react-native-snap-carousel'
 // @ts-ignore
 import styled from 'styled-components/native'
 import HotelCard from './HotelCard'
@@ -15,8 +16,14 @@ const Row = styled.View`
 
 const primaryColor = '#52C0B4'
 const B_RADIUS = 20
+const { width } = Dimensions.get('window')
+const sWidth = width - (width * 0.20)
 
 export default function App() {
+  function renderCItem(item: any) {
+    return <HotelCard key={item.index} />
+  }
+
   return (
     <View style={styles.container}>
       <View style={{
@@ -65,8 +72,14 @@ export default function App() {
         />
       </View>
 
-
-      <HotelCard />
+      <View style={{ alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
+        <Carousel
+          data={[{ index: 2 }, { index: 3 }, { index: 4 }, { index: 5 }]}
+          renderItem={renderCItem}
+          itemWidth={width - 140}
+          sliderWidth={width}
+        />
+      </View>
     </View>
   );
 }

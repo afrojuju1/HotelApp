@@ -25,6 +25,7 @@ export default function HotelCard() {
             <View>
               <Text style={{
                 fontWeight: 'bold',
+                marginBottom: 5,
               }}>Silver Hotel & SPA</Text>
               <Text>Green street, Central district</Text>
             </View>

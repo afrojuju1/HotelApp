@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react'
 import { Dimensions, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import Carousel from 'react-native-snap-carousel'
+import { SceneMap, TabView } from 'react-native-tab-view'
 // @ts-ignore
 import styled from 'styled-components/native'
 import HotelCard from './HotelCard'
+import MainTabs from './MainTabs'
 
 const StyledView = styled.View`
   background-color: papayawhip;
@@ -28,35 +30,45 @@ export default function App() {
     <View style={styles.container}>
       <View style={{
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
       }}>
-        <Row>
+        <View style={{
+          flex: 0.7,
+          flexDirection: 'row',
+        }}>
           <Text style={{
-            fontSize: 30,
+            fontSize: 40,
           }}>Find your hotel in
+            <Text style={{
+              color: primaryColor,
+              fontSize: 40,
+              fontWeight: 'bold'
+            }}> Paris</Text>
           </Text>
-          <Text style={{
-            color: primaryColor,
-            fontSize: 30,
-            marginLeft: 6,
-            fontWeight: 'bold'
-          }}>Paris</Text>
-        </Row>
-        <TouchableOpacity onPress={() => {}}>
-          <View style={{ backgroundColor: 'blue', width: 30, height: 30 }} />
-          {/*<Ionicons name="ios-checkbox" size={32} color="green" />*/}
-        </TouchableOpacity>
+        </View>
+
+        <View style={{
+          flex: 0.3,
+          justifyContent: 'flex-start',
+          alignItems: 'flex-end'
+        }}>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={{ backgroundColor: 'blue', width: 30, height: 30 }} />
+            {/*<Ionicons name="ios-checkbox" size={32} color="green" />*/}
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={{
         flexDirection: 'row',
-        backgroundColor: '#999999',
-        width: '100%',
+        backgroundColor: '#dedede',
+        width: '120%',
         alignItems: 'center',
         borderRadius: 30,
         height: 50,
         paddingLeft: 10,
         paddingRight: 15,
+        marginTop: 25,
       }}>
         <View style={{ backgroundColor: 'red', width: 30, height: 30 }} />
         <TextInput
@@ -66,20 +78,14 @@ export default function App() {
             paddingLeft: 10,
             paddingRight: 10,
             width: '90%',
+            fontWeight: '500',
           }}
           placeholder={'Search'}
           // value={'sample'}
         />
       </View>
 
-      <View style={{ alignItems: 'center', paddingTop: 20, paddingBottom: 20 }}>
-        <Carousel
-          data={[{ index: 2 }, { index: 3 }, { index: 4 }, { index: 5 }]}
-          renderItem={renderCItem}
-          itemWidth={width - 140}
-          sliderWidth={width}
-        />
-      </View>
+      <MainTabs />
     </View>
   );
 }

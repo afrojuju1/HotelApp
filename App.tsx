@@ -1,31 +1,9 @@
 import React, { useState } from 'react'
 import { Dimensions, Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-import Carousel from 'react-native-snap-carousel'
-import { SceneMap, TabView } from 'react-native-tab-view'
-// @ts-ignore
-import styled from 'styled-components/native'
-import HotelCard from './HotelCard'
+import { P_COLOR } from './constants'
 import MainTabs from './MainTabs'
 
-const StyledView = styled.View`
-  background-color: papayawhip;
-`;
-
-const Row = styled.View`
-  flex-direction: row;
-`;
-
-const primaryColor = '#52C0B4'
-const B_RADIUS = 20
-const { width } = Dimensions.get('window')
-const sWidth = width - (width * 0.20)
-
 export default function App() {
-  function renderCItem(item: any) {
-    return <HotelCard key={item.index} />
-  }
-
   return (
     <View style={styles.container}>
       <View style={{
@@ -40,7 +18,7 @@ export default function App() {
             fontSize: 40,
           }}>Find your hotel in
             <Text style={{
-              color: primaryColor,
+              color: P_COLOR,
               fontSize: 40,
               fontWeight: 'bold'
             }}> Paris</Text>
@@ -94,7 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 50,
     padding: 20,
+    paddingTop: 40,
   },
 });

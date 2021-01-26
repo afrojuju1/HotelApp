@@ -1,48 +1,53 @@
 import React from 'react'
-import { ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { B_RADIUS, P_COLOR } from './constants'
 
 const uri = 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80'
 
-export default function HotelCard() {
+interface Props {
+  onPress: () => void
+}
+export default function HotelCard({ onPress }: Props) {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={{ uri }}
-        style={styles.imgWrapper}
-        imageStyle={{
-          borderRadius: B_RADIUS,
-        }}
-      >
-        <View style={styles.priceWrapper}>
-          <Text style={styles.price}>$ 150</Text>
-        </View>
-        <View style={styles.detailsWrapper}>
-          <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-            <View>
-              <Text style={{
-                fontWeight: 'bold',
-                marginBottom: 5,
-              }}>Silver Hotel & SPA</Text>
-              <Text>Green street, Central district</Text>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={{ uri }}
+          style={styles.imgWrapper}
+          imageStyle={{
+            borderRadius: B_RADIUS,
+          }}
+        >
+          <View style={styles.priceWrapper}>
+            <Text style={styles.price}>$ 150</Text>
+          </View>
+          <View style={styles.detailsWrapper}>
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+              <View>
+                <Text style={{
+                  fontWeight: 'bold',
+                  marginBottom: 5,
+                }}>Silver Hotel & SPA</Text>
+                <Text>Green street, Central district</Text>
+              </View>
+              {/*todo: replace with bookmark icon*/}
+              <View style={{ backgroundColor: 'red', width: 30, height: 30 }} />
             </View>
-            {/*todo: replace with bookmark icon*/}
-            <View style={{ backgroundColor: 'red', width: 30, height: 30 }} />
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 20,
+            }}>
+              <Text>4.0 star ratings!</Text>
+              <Text>300 reviews</Text>
+            </View>
           </View>
-          <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}>
-            <Text>4.0 star ratings!</Text>
-            <Text>300 reviews</Text>
-          </View>
-        </View>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </TouchableOpacity>
   )
 }
 

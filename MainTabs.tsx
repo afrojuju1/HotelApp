@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Dimensions, View } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
@@ -8,8 +9,10 @@ import HotelCard from './HotelCard'
 const { width } = Dimensions.get('window')
 
 const FirstRoute = () => {
+  const nav = useNavigation()
+
   function renderCItem(item: any) {
-    return <HotelCard key={item.index} />
+    return <HotelCard key={item.index} onPress={() => nav.navigate('details')} />
   }
 
   return (
